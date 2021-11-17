@@ -286,12 +286,12 @@ echo
 		;;
 		*)
 			TIME r "您已关闭把‘定时更新插件’编译进固件！"
-			export Github="https://github.com/281677160/build-actions"
+			export Github="https://github.com.cnpmjs.org/281677160/build-actions"
 		;;
 	esac
 }
 [[ "${REG_UPDATE}" == "true" ]] && {
-	[[ -z ${Git} ]] && export Git="https://github.com/281677160/build-actions"
+	[[ -z ${Git} ]] && export Git="https://github.com.cnpmjs.org/281677160/build-actions"
 	TIME g "设置Github地址,定时更新固件需要把固件传至对应地址的Releases"
 	TIME z "回车默认为：$Git"
 	read -p " 请输入Github地址：" Github
@@ -313,7 +313,7 @@ echo
 TIME g "正在下载源码中,请耐心等候~~~"
 echo
 if [[ $firmware == "Lede_source" ]]; then
-	rm -rf openwrt && git clone https://github.com/coolsnowwolf/lede openwrt
+	rm -rf openwrt && git clone https://github.com.cnpmjs.org/coolsnowwolf/lede openwrt
 	[[ $? -ne 0 ]] && {
 		TIME r "源码下载失败，请检测网络或更换节点再尝试!"
 		echo
@@ -324,7 +324,7 @@ if [[ $firmware == "Lede_source" ]]; then
 	echo -e "\nipdz=$ip" > openwrt/.Lede_core
 	echo -e "\nGit=$Github" >> openwrt/.Lede_core
 elif [[ $firmware == "Lienol_source" ]]; then
-	rm -rf openwrt && git clone -b 19.07 --single-branch https://github.com/Lienol/openwrt openwrt
+	rm -rf openwrt && git clone -b 19.07 --single-branch https://github.com.cnpmjs.org/Lienol/openwrt openwrt
 	[[ $? -ne 0 ]] && {
 		TIME r "源码下载失败，请检测网络或更换节点再尝试!"
 		echo
@@ -335,7 +335,7 @@ elif [[ $firmware == "Lienol_source" ]]; then
 	echo -e "\nipdz=$ip" > openwrt/.Lienol_core
 	echo -e "\nGit=$Github" >> openwrt/.Lienol_core
 elif [[ $firmware == "Mortal_source" ]]; then
-	rm -rf openwrt && git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+	rm -rf openwrt && git clone -b openwrt-21.02 --single-branch https://github.com.cnpmjs.org/immortalwrt/immortalwrt openwrt
 	[[ $? -ne 0 ]] && {
 		TIME r "源码下载失败，请检测网络或更换节点再尝试!"
 		echo
@@ -346,7 +346,7 @@ elif [[ $firmware == "Mortal_source" ]]; then
 	echo -e "\nipdz=$ip" > openwrt/.Mortal_core
 	echo -e "\nGit=$Github" >> openwrt/.Mortal_core
 elif [[ $firmware == "openwrt_amlogic" ]]; then
-	rm -rf openwrt && git clone https://github.com/coolsnowwolf/lede openwrt
+	rm -rf openwrt && git clone https://github.com.cnpmjs.org/coolsnowwolf/lede openwrt
 	[[ $? -ne 0 ]] && {
 		TIME r "源码下载失败，请检测网络或更换节点再尝试!"
 		echo
@@ -355,7 +355,7 @@ elif [[ $firmware == "openwrt_amlogic" ]]; then
 	echo
 	TIME g "正在下载打包所需的内核,请耐心等候~~~"
 	echo
-	rm -rf amlogic-s9xxx && svn co https://github.com/ophub/amlogic-s9xxx-openwrt/trunk/amlogic-s9xxx amlogic-s9xxx
+	rm -rf amlogic-s9xxx && svn co https://github.com.cnpmjs.org/ophub/amlogic-s9xxx-openwrt/trunk/amlogic-s9xxx amlogic-s9xxx
 	[[ $? -ne 0 ]] && {
 		rm -rf amlogic-s9xxx
 		TIME r "内核下载失败，请检测网络或更换节点再尝试!"
@@ -382,12 +382,12 @@ export NETIP="package/base-files/files/etc/networkip"
 [[ -e "${firmware}" ]] && cp -Rf "${firmware}"/${Core} "${Home}"/${Core}
 echo "Compile_Date=$(date +%Y%m%d%H%M)" > $Home/Openwrt.info
 [ -f $Home/Openwrt.info ] && . $Home/Openwrt.info
-svn co https://github.com/281677160/build-actions/trunk/build $Home/build > /dev/null 2>&1
+svn co https://github.com.cnpmjs.org/281677160/build-actions/trunk/build $Home/build > /dev/null 2>&1
 [[ $? -ne 0 ]] && {
 	TIME r "编译脚本下载失败，请检测网络或更换节点再尝试!"
 	exit 1
 }
-git clone https://github.com/281677160/common $Home/build/common
+git clone https://github.com.cnpmjs.org/281677160/common $Home/build/common
 [[ $? -ne 0 ]] && {
 	TIME r "脚本扩展下载失败，请检测网络或更换节点再尝试!"
 	exit 1
