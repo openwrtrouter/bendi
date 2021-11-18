@@ -286,12 +286,12 @@ echo
 		;;
 		*)
 			TIME r "您已关闭把‘定时更新插件’编译进固件！"
-			export Github="https://github.com.cnpmjs.org/281677160/build-actions"
+			export Github="https://github.com.cnpmjs.org/q83324/build-actions"
 		;;
 	esac
 }
 [[ "${REG_UPDATE}" == "true" ]] && {
-	[[ -z ${Git} ]] && export Git="https://github.com.cnpmjs.org/281677160/build-actions"
+	[[ -z ${Git} ]] && export Git="https://github.com.cnpmjs.org/q83324/build-actions"
 	TIME g "设置Github地址,定时更新固件需要把固件传至对应地址的Releases"
 	TIME z "回车默认为：$Git"
 	read -p " 请输入Github地址：" Github
@@ -382,12 +382,12 @@ export NETIP="package/base-files/files/etc/networkip"
 [[ -e "${firmware}" ]] && cp -Rf "${firmware}"/${Core} "${Home}"/${Core}
 echo "Compile_Date=$(date +%Y%m%d%H%M)" > $Home/Openwrt.info
 [ -f $Home/Openwrt.info ] && . $Home/Openwrt.info
-svn co https://github.com.cnpmjs.org/281677160/build-actions/trunk/build $Home/build > /dev/null 2>&1
+svn co https://github.com.cnpmjs.org/q83324/build-actions/trunk/build $Home/build > /dev/null 2>&1
 [[ $? -ne 0 ]] && {
 	TIME r "编译脚本下载失败，请检测网络或更换节点再尝试!"
 	exit 1
 }
-git clone https://github.com.cnpmjs.org/281677160/common $Home/build/common
+git clone https://github.com.cnpmjs.org/q83324/common $Home/build/common
 [[ $? -ne 0 ]] && {
 	TIME r "脚本扩展下载失败，请检测网络或更换节点再尝试!"
 	exit 1
